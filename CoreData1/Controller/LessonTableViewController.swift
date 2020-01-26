@@ -125,8 +125,8 @@ class LessonTableViewController: UITableViewController {
             }
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (alertAction) in
-            
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { [weak self] (alertAction) in
+            self?.arrOfUpdatedStudents = nil
         }
         
         alert.addAction(defaultAction)

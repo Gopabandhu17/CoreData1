@@ -61,6 +61,16 @@ class LessonTableViewController: UITableViewController {
         present(showAlert(with: "Update"), animated: true, completion: nil)
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete{
+            
+            lessonService?.delete(student: arrOfStudents[indexPath.row])
+            arrOfStudents.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
     @IBAction func btnAdd(_ sender: UIBarButtonItem) {
         
         present(showAlert(with: "Add"), animated: true, completion: nil)

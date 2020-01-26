@@ -12,10 +12,14 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+//        let navigationVC = window?.rootViewController as? UINavigationController
+//        let lessonTableVC = navigationVC?.viewControllers[0] as! LessonTableViewController
+//        lessonTableVC.moc = persistentContainer.viewContext
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         return true
     }
 
@@ -76,6 +80,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+    }
+    
+    func getViewContext() -> NSManagedObjectContext{
+        
+        return persistentContainer.viewContext
     }
 
 }
